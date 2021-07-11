@@ -49,6 +49,7 @@ body::before {
     border-radius: 10px;
     border: 5px solid black;
     font-weight: bold;
+    display :flex;
     
 }
 
