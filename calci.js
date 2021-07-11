@@ -13,8 +13,20 @@ function addElement(c)
 function checkLast(c)
 {
     var eqn = document.querySelector("#display #input").innerHTML;
-    if(eqn.length == 0) return true;
-    if(eqn[eqn.length-2] == c)  return true;
+    if(eqn.length == 0)
+    {
+        if(c == '-')    return false;
+        return true;
+    }
+    if(c == '.')
+    { 
+        if(eqn[eqn.length-1] == '.')    return true;
+        return false;
+    }
+    var exp = ['/', '*', '+', '-', '%'];
+    if(exp.includes(eqn[eqn.length-2])) 
+        document.querySelector("#display #input").innerHTML = eqn.slice(0, eqn.length-3);
+    if((document.querySelector("#display #input").innerHTML).length == 0)   return true; 
     return false;
 }
 
@@ -26,6 +38,7 @@ function backspace()
 
 function solve(s)
 {
+    if(s.length == 0)   return 0;
     var res = eval(s);
     if(String(res).length < 25)  document.querySelector("#display #output").innerHTML = eval(s);
     else    document.querySelector("#display #output").innerHTML = "NANA";
@@ -37,7 +50,6 @@ rowOne[0].onclick = function() { clearInputOuput(); }
 rowOne[1].onclick = function() { backspace(); }
 rowOne[2].onclick = function() { if(!checkLast('%'))    addElement(' % '); }
 rowOne[3].onclick = function() { if(!checkLast('/'))    addElement(' / '); }
-
 
 var rowTwo = allRows[1].querySelectorAll("button");
 rowTwo[0].onclick = function() { addElement(7); }
@@ -61,8 +73,3 @@ var rowFive = allRows[4].querySelectorAll("button");
 rowFive[0].onclick = function() { addElement(0); }
 rowFive[1].onclick = function() { if(!checkLast('.'))    addElement('.'); }
 rowFive[2].onclick = function() { solve(document.querySelector("#display #input").innerHTML); }
-
-
-
-
-
