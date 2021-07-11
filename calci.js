@@ -24,6 +24,7 @@ function checkLast(c)
         return false;
     }
     var exp = ['/', '*', '+', '-', '%'];
+    if(eqn[eqn.length-1] == '.')    return true;
     if(exp.includes(eqn[eqn.length-2])) 
         document.querySelector("#display #input").innerHTML = eqn.slice(0, eqn.length-3);
     if((document.querySelector("#display #input").innerHTML).length == 0)   return true; 
@@ -46,31 +47,37 @@ function solve(s)
 }
 
 var allRows = document.querySelectorAll(".row");
-var rowOne = allRows[0].querySelectorAll("button");
-rowOne[0].onclick = function() { clearInputOuput(); }
-rowOne[1].onclick = function() { backspace(); }
-rowOne[2].onclick = function() { if(!checkLast('%'))    addElement(' % '); }
-rowOne[3].onclick = function() { if(!checkLast('/'))    addElement(' / '); }
 
-var rowTwo = allRows[1].querySelectorAll("button");
-rowTwo[0].onclick = function() { addElement(7); }
-rowTwo[1].onclick = function() { addElement(8); }
-rowTwo[2].onclick = function() { addElement(9); }
-rowTwo[3].onclick = function() { if(!checkLast("*"))    addElement(' * '); }
-
-var rowThree = allRows[2].querySelectorAll("button");
-rowThree[0].onclick = function() { addElement(4); }
-rowThree[1].onclick = function() { addElement(5); }
-rowThree[2].onclick = function() { addElement(6); }
-rowThree[3].onclick = function() { if(!checkLast("-"))    addElement(' - '); }
-
-var rowFour = allRows[3].querySelectorAll("button");
-rowFour[0].onclick = function() { addElement(1); }
-rowFour[1].onclick = function() { addElement(2); }
-rowFour[2].onclick = function() { addElement(3); }
-rowFour[3].onclick = function() { if(!checkLast('+'))    addElement(' + '); }
-
-var rowFive = allRows[4].querySelectorAll("button");
-rowFive[0].onclick = function() { addElement(0); }
-rowFive[1].onclick = function() { if(!checkLast('.'))    addElement('.'); }
-rowFive[2].onclick = function() { solve(document.querySelector("#display #input").innerHTML); }
+for(var i=0; i<allRows.length; i++)
+{
+    var row = allRows[i].querySelectorAll("button");
+    for(var j=0; j<row.length; j++)
+    {
+        row[j].addEventListener("click", function()
+        {
+            var buttonClicked = this.innerHTML;
+            switch (buttonClicked)
+            {
+                case " AC " : clearInputOuput(); break;
+                case " Backspace " : backspace(); break;
+                case " 1 " : addElement('1'); break;
+                case " 2 " : addElement('2'); break;
+                case " 3 " : addElement('3'); break;
+                case " 4 " : addElement('4'); break;
+                case " 5 " : addElement('5'); break;
+                case " 6 " : addElement('6'); break;
+                case " 7 " : addElement('7'); break;
+                case " 8 " : addElement('8'); break;
+                case " 9 " : addElement('9'); break;
+                case " 0 " : addElement('0'); break;
+                case " % " : if(!checkLast('%'))    addElement(' % '); break;
+                case " / " : if(!checkLast('/'))    addElement(' / '); break;
+                case " + " : if(!checkLast('+'))    addElement(' + '); break;
+                case " - " : if(!checkLast('-'))    addElement(' - '); break;
+                case " * " : if(!checkLast('*'))    addElement(' * '); break;
+                case " . " : if(!checkLast('.'))    addElement('.'); break;
+                case " = " : solve(document.querySelector("#display #input").innerHTML); break;
+            }
+        });
+    }
+}
