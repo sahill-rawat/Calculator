@@ -14,7 +14,7 @@ function checkLast(c)
 {
     var eqn = document.querySelector("#display #input").innerHTML;
     if(eqn.length == 0) return true;
-    if(eqn[eqn.length-1] == c)  return true;
+    if(eqn[eqn.length-2] == c)  return true;
     return false;
 }
 
@@ -26,7 +26,6 @@ function backspace()
 
 function solve(s)
 {
-    
     var res = eval(s);
     if(String(res).length < 25)  document.querySelector("#display #output").innerHTML = eval(s);
     else    document.querySelector("#display #output").innerHTML = "NANA";
@@ -60,7 +59,7 @@ rowFour[3].onclick = function() { if(!checkLast('+'))    addElement(' + '); }
 
 var rowFive = allRows[4].querySelectorAll("button");
 rowFive[0].onclick = function() { addElement(0); }
-rowFive[1].onclick = function() { if(checkLast('.'))    addElement('.'); }
+rowFive[1].onclick = function() { if(!checkLast('.'))    addElement('.'); }
 rowFive[2].onclick = function() { solve(document.querySelector("#display #input").innerHTML); }
 
 
