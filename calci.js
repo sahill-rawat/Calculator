@@ -32,6 +32,7 @@ function checkLast(c)
 
 function backspace()
 {
+    document.querySelector("#display #output").innerHTML = "";
     var eqn = document.querySelector("#display #input").innerHTML;
     document.querySelector("#display #input").innerHTML = eqn.slice(0, eqn.length-1);
 }
