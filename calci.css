@@ -1,6 +1,6 @@
 body::before {
 
-    background: url(japwave.jpg) center;
+    background: url(./japwave.jpg) center;
     filter: blur(2px);
     content: "";
     left: 0;
