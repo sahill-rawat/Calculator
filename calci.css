@@ -11,11 +11,39 @@ body::before {
     background-repeat: no-repeat;
 }
 
+
 .container {
-    height: 600px;
-    width: 67%;
-    margin-left: 34%;
-    margin-top: 8%;
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.fllex {
+    display: flex;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row > button {
+    height: 98px;
+    width: 25%;
+    margin: 1px;
+    border-radius: 10px;
+    border: 5px solid black;
+    font: 1rem;
+    font-weight: 700;
+}
+
+button:hover {
+    border-bottom: 5px solid yellow;
+    transition: 0.3s;
+    border-right: 5px solid yellow;
 }
 
 #display {
@@ -29,35 +57,21 @@ body::before {
 }
 
 #input {
-    height: 50px;
+    height: 50%;
     background-color: white;
     text-align: right;
     font-size: 2rem;
 }
 
 #output {
-    height: 50px;
+    height: 50%;
     background-color: white;
     text-align: right;
     font-size: 2rem;
 }
 
-.fllex {
-    display: flex;
-}
-
-.row > button {
-    height: 72px;
-    width: 10.2%;
-    margin: 1px;
-    border-radius: 10px;
-    border: 5px solid black;
-    font: 1rem;
-    font-weight: 700;
-}
-
-button:hover {
-    border-bottom: 5px solid yellow;
-    transition: 0.3s;
-    border-right: 5px solid yellow;
+#all-row
+{
+    height: 500px;
+    width: 40%;
 }
